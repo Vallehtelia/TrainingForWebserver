@@ -98,7 +98,7 @@ int main() {
         // Tassa bufferi nyt vaan printataan terminaaliin
         std::cout << "Received request:\n" << buffer << std::endl;
 
-        // Tassa luetaan html filu ja asetetaan oikee path
+        // Tassa luetaan html filu ja asetetaan oikee path mika lahetetaan clientille
         char *page = (strstr(buffer, "GET") + 4);
         int i = 0;
         while (page[i] != ' ' && page[i] != '\0')
