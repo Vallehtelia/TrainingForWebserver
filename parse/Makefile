@@ -6,7 +6,7 @@ CFLAGS := -Wall -Wextra -Werror -g
 SRCS := ./parsing/ServerConfig.cpp ./parsing/LocationConfig.cpp ./parsing/parseConfFile.cpp main.cpp
 
 # Object files
-OBJS := $(SRCS:.c=.o)
+OBJS := $(SRCS:.cpp=.o)
 
 # Target executable
 TARGET := myprogram
@@ -15,7 +15,7 @@ TARGET := myprogram
 all: $(TARGET)
 
 # Compile source files into object files
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Link object files into the target executable

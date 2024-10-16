@@ -100,7 +100,7 @@ std::string	ServerConfig::getLocation(std::string key) const
 
 void	ServerConfig::printConfig() const
 {
-	std::cout << "Server config:" << std::endl;
+	std::cout << std::endl << "\033[1;32mServer config:\033[0m" << std::endl;
 	std::cout << "Listen port: " << _listen_port << std::endl;
 	std::cout << "Server name: " << _server_name << std::endl;
 	std::cout << "Host: " << _host << std::endl;
@@ -113,8 +113,23 @@ void	ServerConfig::printConfig() const
 		std::cout << "Error code: " << it->first << " Path: " << it->second << std::endl;
 	}
 	std::cout << "Locations:" << std::endl;
+	std::cout << "Number of locations: " << _locations.size() << std::endl;
 	for (std::vector<LocationConfig>::const_iterator it = _locations.begin(); it != _locations.end(); it++)
 	{
-		std::cout << "Location: " << it->getLocation() << " Root: " << it->getRoot() << std::endl;
+		std::cout << "\033[1;32mLocation: " << it->getLocation() << "\033[0m" << std::endl;
+		std::cout << "Root: " << it->getRoot() << std::endl;
+		std::vector<std::string> allow_methods = it->getAllowMethods();
+		if (allow_methods.size() > 0)
+		{
+			for (std::vector<std::string>::const_iterator it = allow_methods.begin(); it != allow_methods.end(); it++)
+			{
+				std::cout << *it << " ";
+			}
+			std::cout << std::endl;
+		}
+		std::cout << "Autoindex: " << it->isAutoindex() << std::endl;
+		std::cout << "Index: " << it->getIndex() << std::endl;
+		std::cout << "Redirect: " << it->getRedirect() << std::endl;
+		std::cout << "Cgi path: " << it->getCgiPath() << std::endl;
 	}
 }

@@ -43,5 +43,5 @@ class ServerConfig
 		void	printConfig() const;
 };
 
-bool checkConfFile(char *filename);
-void parseData(char *filename, ServerConfig &server, LocationConfig &location);
+bool	checkConfFile(char *filename);
+void	parseData(char *filename, std::vector<ServerConfig> &server);
